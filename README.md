@@ -1,6 +1,6 @@
 # RunAsServiceAccount
 
-RunAsServiceAccount.exe receives the name of a service, and then launches a command prompt process with the service account of the given service.
+RunAsServiceAccount is a Windows API program that receives the name of a service, and then launches a command prompt process with the service account of the given service. 
 
 ## How It Works
 
