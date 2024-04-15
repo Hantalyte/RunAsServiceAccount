@@ -371,7 +371,6 @@ int main()
 	aExplicitEntries[1].Trustee.TrusteeForm = TRUSTEE_IS_SID;
 	aExplicitEntries[1].Trustee.TrusteeType = TRUSTEE_IS_WELL_KNOWN_GROUP;
 	aExplicitEntries[1].Trustee.ptstrName = (LPWCH)pSystemSid;
-	FreeSid(pSystemSid);
 
 	aExplicitEntries[2].grfAccessPermissions = GENERIC_READ;
 	aExplicitEntries[2].grfAccessMode = SET_ACCESS;
@@ -385,7 +384,7 @@ int main()
 	
 	// Step 6C: Establish Groups for the Token
 
-	DWORD dwNumGroups = 9;
+	DWORD dwNumGroups = 10;
 	DWORD dwGroupsSize = sizeof(TOKEN_GROUPS) + sizeof(SID_AND_ATTRIBUTES) * (dwNumGroups - 1);
 	PTOKEN_GROUPS pNewTokenGroups = malloc(dwGroupsSize);
 	pNewTokenGroups->GroupCount = dwNumGroups;
@@ -451,6 +450,8 @@ int main()
 	pNewTokenGroups->Groups[7].Attributes = SE_GROUP_ENABLED | SE_GROUP_ENABLED_BY_DEFAULT | SE_GROUP_MANDATORY;
 	pNewTokenGroups->Groups[8].Sid = pAdminSid;
 	pNewTokenGroups->Groups[8].Attributes = SE_GROUP_ENABLED | SE_GROUP_ENABLED_BY_DEFAULT | SE_GROUP_OWNER;
+	pNewTokenGroups->Groups[9].Sid = pSystemSid;
+	pNewTokenGroups->Groups[9].Attributes = SE_GROUP_ENABLED | SE_GROUP_ENABLED_BY_DEFAULT | SE_GROUP_MANDATORY;
 	
 	FreeSid(pSysIntegrityLabelSid);
 	FreeSid(pEveryoneSid);
@@ -460,6 +461,7 @@ int main()
 	FreeSid(pAuthUsersSid);
 	FreeSid(pThisOrgSid);
 	FreeSid(pLocalSid);
+	FreeSid(pSystemSid);
 
 	// Step 6D: Establish Other Necessary Values
 
