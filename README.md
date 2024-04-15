@@ -16,7 +16,7 @@ Here is unofficial documentation for the two mentioned functions:
 
 ## Installation and Compilation Information
 
-The program was written in C and compiled using Visual Studio 2022. To run it, simply download and launch the "RunAsServiceAccount.exe" file from the repository.
+The program was written in C and compiled using Visual Studio 2022. To run it, simply download and launch the "RunAsServiceAccount.exe" file from the repository. Note that it must be run with administrative privileges.
 
 ## Usage
 
