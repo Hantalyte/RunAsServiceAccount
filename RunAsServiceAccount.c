@@ -505,8 +505,8 @@ int main()
 	}
 
 	CloseHandle(hCreatedToken);
-	printf("Success!\n");
 	RevertToSelf();
 	NetUserDel(NULL, wszTempAcctName);
+	printf("Success!\n");
 	system("pause");
 }
