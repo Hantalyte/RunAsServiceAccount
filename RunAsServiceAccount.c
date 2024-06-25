@@ -93,7 +93,7 @@ void ErrorExit(wchar_t* wszFunction, DWORD dwErrorCode) {
 	
 	size_t cbNumWChars = wcslen(wszErrorMsg) + wcslen(wszFunction) + strlen(" failed with error : ") + dwNumDigits;
 	wchar_t* wszDisplayMsg = malloc(cbNumWChars * sizeof(wchar_t));
-	swprintf(wszDisplayMsg, cbNumWChars, L"%ws failed with error %lu: %ws", wszFunction, dwErrorCode, wszErrorMsg);
+	swprintf(wszDisplayMsg, cbNumWChars, L"%ls failed with error %lu: %ls", wszFunction, dwErrorCode, wszErrorMsg);
 
 	MessageBoxW(NULL, wszDisplayMsg, L"Error", MB_OK);
 	LocalFree(wszErrorMsg);
@@ -121,7 +121,7 @@ void NtStatusErrorExit(wchar_t* wszFunction, NTSTATUS StatusCode) {
 
 	size_t cbNumWChars = wcslen(wszErrorMsg) + wcslen(wszFunction) + strlen(" failed with error code 0x: ") + lNumDigits;
 	wchar_t* wszDisplayMsg = malloc(cbNumWChars * sizeof(wchar_t));
-	swprintf(wszDisplayMsg, cbNumWChars, L"%ws failed with error code 0x%X: %ws", wszFunction, StatusCode, wszErrorMsg);
+	swprintf(wszDisplayMsg, cbNumWChars, L"%ls failed with error code 0x%X: %ls", wszFunction, StatusCode, wszErrorMsg);
 
 	MessageBoxW(NULL, wszDisplayMsg, L"Error", MB_OK);
 	LocalFree(wszErrorMsg);
